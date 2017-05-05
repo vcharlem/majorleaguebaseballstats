@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MajorLeagueStats</title>
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+</head>
+<body class="jumbotron" style="padding:0%">
+ <div class="fluid-container"> 	
+	<div class="fluid-row">
+	 
+	  	<div class="col-md-1" style="padding-top: 0%">	
+	  	</div>		
+	  	
+	    <div class="col-md-9">
+			<%= yield %>
+		</div>
+		
+	</div>
+ </div>	
+</body>
+</html>

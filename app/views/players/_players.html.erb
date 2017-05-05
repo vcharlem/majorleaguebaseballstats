@@ -1,0 +1,38 @@
+<%= hidden_field_tag :direction, params[:direction] %>
+<%= hidden_field_tag :sort, params[:sort] %>
+
+<table class="table table-hover table-striped">
+  <thead>
+    <tr>
+      <th>Last Name</th>
+      <th>First Name</th>
+      <th><%= sortable "avg", "AVG" %> </th>
+      <th><%= sortable "home_runs", "Home Runs" %> </th>
+      <th><%= sortable "rbi", "RBI" %> </th>
+      <th><%= sortable "runs", "Runs" %> </th>
+      <th><%= sortable "steals", "SB" %> </th>
+      <th><%= sortable "ops", "OPS" %> </th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+  <tbody>  
+	<%= ajax_links :section_id => "players" do %>
+	  <%= will_paginate @players %>
+	<% end %>
+	
+	<%= ajax_loadzone do %>
+	    <% @players.each do |player| %>
+	      <tr>
+	        <td><%= player.surname %></td>
+	        <td><%= player.given_name %></td>
+	        <td><%= "%.3f" % [player.avg] unless player.avg.nil? %></td>
+	        <td><%= player.home_runs %></td>
+	        <td><%= player.rbi %></td>
+	        <td><%= player.runs %></td>
+	        <td><%= player.steals %></td>
+	        <td><%= "%.3f" % [player.ops] %></td>
+	      </tr>
+	    <% end %>
+	<% end %>
+  </tbody>
+</table>

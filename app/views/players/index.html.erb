@@ -1,0 +1,12 @@
+<h3> 1998 MLB Player Statistics </h3>
+<%- will_paginate @players %> 
+<br>
+
+<%= form_tag players_path, :method => 'get', :id => "players_search" do %>
+  <p>
+    <%= text_field_tag :search, params[:search] %>
+    <%= submit_tag "Search by Name", :name => nil %>
+  </p>
+  <div id='players'><%= render 'players' %></div>
+<% end %>
+<br>

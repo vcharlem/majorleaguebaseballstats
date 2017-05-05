@@ -1,0 +1,57 @@
+<%= form_for(@player) do |f| %>
+  <% if @player.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@player.errors.count, "error") %> prohibited this player from being saved:</h2>
+
+      <ul>
+      <% @player.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :surname %><br>
+    <%= f.text_field :surname %>
+  </div>
+  <div class="field">
+    <%= f.label :given_name %><br>
+    <%= f.text_field :given_name %>
+  </div>
+  <div class="field">
+    <%= f.label :position %><br>
+    <%= f.text_field :position %>
+  </div>
+  <div class="field">
+    <%= f.label :at_bat %><br>
+    <%= f.number_field :at_bat %>
+  </div>
+  <div class="field">
+    <%= f.label :runs %><br>
+    <%= f.number_field :runs %>
+  </div>
+  <div class="field">
+    <%= f.label :hits %><br>
+    <%= f.number_field :hits %>
+  </div>
+  <div class="field">
+    <%= f.label :rbi %><br>
+    <%= f.number_field :rbi %>
+  </div>
+  <div class="field">
+    <%= f.label :steals %><br>
+    <%= f.number_field :steals %>
+  </div>
+  <div class="field">
+    <%= f.label :errors %><br>
+    <%= f.number_field :errors %>
+  </div>
+  <div class="field">
+    <%= f.label :walks %><br>
+    <%= f.number_field :walks %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
