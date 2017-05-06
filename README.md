@@ -1,4 +1,7 @@
+#H2 MLB Statistics
+
 Response to: https://gist.github.com/wnoronha/9bc99ba2bc421c9599c72c9960c28333
+
 1998 Data set: http://www.cafeconleche.org/examples/baseball/1998statistics.xml
 > rake db:migrate
 > rake import:getxmldata
