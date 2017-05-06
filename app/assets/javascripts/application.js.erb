@@ -19,17 +19,33 @@
 //= require_tree .
 
  $(function() { 	
+//  alert( ("#players").data('players') );
   $(".pagination a").on("click", function() { 
   			$.getScript(this.href);
     		return false;
-  		});
- 
+  	});
+
+  $('#loading').hide();
+
+  $('#fetch').click(function(){ 
+      $("#players").hide();
+      $("#players_search").hide(); 
+
+      $('#loading').show();
+
+      var cnt = <%= Player.count %>
+      // alert(cnt);
+    })
 
   $("#players_search input").keyup(
   	function() {
     $.get($("#players_search").attr("action"), $("#players_search").serialize(), null, "script");
     return false;
   });
+  var cnt = <%= Player.count %>
 
-  
+  if(cnt==0) {
+	  $("#players").hide();
+	  $("#players_search").hide();  
+  }
 }); 

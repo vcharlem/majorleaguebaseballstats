@@ -10,6 +10,7 @@ gem 'rake', '< 11'
 gem 'will_paginate'
 gem 'ajax_pagination'
 gem 'jquery-historyjs'
+gem 'httparty'
 
 
 gem 'sprockets-rails', :require => 'sprockets/railtie'

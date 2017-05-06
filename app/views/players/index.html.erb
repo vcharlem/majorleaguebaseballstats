@@ -1,12 +1,17 @@
 <h3> 1998 MLB Player Statistics </h3>
 <%- will_paginate @players %> 
+<div class='control-group'>
+  <%= button_to "Fetch MLB Data", upload_path, :method =>'get', remote: true, id: :fetch %>
+</div>
 <br>
+
+<div id="loading"></div>
 
 <%= form_tag players_path, :method => 'get', :id => "players_search" do %>
   <p>
     <%= text_field_tag :search, params[:search] %>
     <%= submit_tag "Search by Name", :name => nil %>
   </p>
-  <div id='players'><%= render 'players' %></div>
+  <div id='players' data-url='players_url' ><%= render 'players' %></div>
 <% end %>
 <br>

@@ -1,6 +1,12 @@
 class PlayersController < ApplicationController
   before_action :set_player, only: [:show, :edit, :update, :destroy]
   helper_method :sort_column, :sort_direction
+
+  def upload
+    service = Statistic.new
+    #payload = service.populatedb()
+    redirect_to action: :index
+  end
   # GET /players
   # GET /players.json
   def index
