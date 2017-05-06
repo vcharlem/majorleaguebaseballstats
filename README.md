@@ -1,10 +1,6 @@
-#H2 MLB Statistics
-
+MLB Statistics
 Response to: https://gist.github.com/wnoronha/9bc99ba2bc421c9599c72c9960c28333
-
 1998 Data set: http://www.cafeconleche.org/examples/baseball/1998statistics.xml
-> rake db:migrate
-> rake import:getxmldata
 
 see demo at http://majorleaguestats.herokuapp.com/
 
@@ -21,5 +17,5 @@ http://en.wikipedia.org/wiki/Baseball_statistics
 4.	It adds a Search Box which searches by last name of players
 
 Future plan is to add
-1. multiple views of the available baseball stats.
+5. multiple views of the available baseball stats.
 6. additional functionality and notes so that this repository can become a learning aid to others.
