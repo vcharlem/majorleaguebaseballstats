@@ -1,15 +1,3 @@
-// This is a manifest file that'll be compiled into application.js, which will include all the files
-// listed below.
-//
-// Any JavaScript/Coffee file within this directory, lib/assets/javascripts, vendor/assets/javascripts,
-// or vendor/assets/javascripts of plugins, if any, can be referenced here using a relative path.
-//
-// It's not advisable to add code directly here, but if you do, it'll appear at the bottom of the
-// compiled file.
-//
-// Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
-// about supported directives.
-//
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
@@ -17,35 +5,55 @@
 //= require bootstrap-sprockets
 //  require ajax_pagination
 //= require_tree .
+ $(window).load( function(){
+    $('#loading').hide();
+ });
 
  $(function() { 	
-//  alert( ("#players").data('players') );
-  $(".pagination a").on("click", function() { 
-  			$.getScript(this.href);
-    		return false;
-  	});
+    var player_cnt = new Number(0);
+    var player_empty = new Boolean(true);
 
-  $('#loading').hide();
+    player_cnt = Number($('#player_cnt').data('cnt'));
+    player_empty = (player_cnt == 0);
 
-  $('#fetch').click(function(){ 
-      $("#players").hide();
-      $("#players_search").hide(); 
+    if( player_empty) {
+        $("#players").hide();
+        $("#players_search").hide();  
+    } else {
+        $("#players").show();
+        $("#players_search").show(); 
+    }
 
-      $('#loading').show();
+    $(".pagination a").on("click", function() { 
+    	$.getScript(this.href);
+      	return false;
+    });
+ 
+    doneloading = function() {
+        window.location.reload();
+        return 0;
+    }
 
-      var cnt = <%= Player.count %>
-      // alert(cnt);
-    })
+    startloading = function() {
+        $("#players").hide();
+        $("#players_search").hide(); 
+        $('#loading').show();  
+    }
 
-  $("#players_search input").keyup(
-  	function() {
-    $.get($("#players_search").attr("action"), $("#players_search").serialize(), null, "script");
-    return false;
-  });
-  var cnt = <%= Player.count %>
+    $('#fetch').click(function(){ 
+        $(this).attr("disabled", "disabled"); 
 
-  if(cnt==0) {
-	  $("#players").hide();
-	  $("#players_search").hide();  
-  }
+        startloading();
+        $.ajax({
+            url: "/upload",
+            type: 'GET',
+            success: doneloading
+        });
+      })
+
+    $("#players_search input").keyup(
+    	function() {
+      $.get($("#players_search").attr("action"), $("#players_search").serialize(), null, "script");
+      return false;
+    });
 }); 

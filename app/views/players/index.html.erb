@@ -1,7 +1,7 @@
-<h3> 1998 MLB Player Statistics </h3>
+<h3> 1998 MLB Player Statistics (Players: <%= @player_cnt %> ) </h3>
 <%- will_paginate @players %> 
 <div class='control-group'>
-  <%= button_to "Fetch MLB Data", upload_path, :method =>'get', remote: true, id: :fetch %>
+  <%= button_to "Fetch MLB Data", root_path, :method =>'get', remote: true, id: :fetch %>
 </div>
 <br>
 
@@ -15,3 +15,4 @@
   <div id='players' data-url='players_url' ><%= render 'players' %></div>
 <% end %>
 <br>
+<div id='player_cnt' data-cnt="<%=@player_cnt%>" > </div>

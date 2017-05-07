@@ -4,13 +4,14 @@ class PlayersController < ApplicationController
 
   def upload
     service = Statistic.new
-    #payload = service.populatedb()
+    payload = service.populatedb()
     redirect_to action: :index
   end
   # GET /players
   # GET /players.json
   def index
     @players = Player.search(params[:search]).order(sort_column + ' ' + sort_direction).paginate(:per_page => 25, :page => params[:page])
+    @player_cnt = @players.size
   end
 
   # GET /players/1

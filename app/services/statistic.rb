@@ -15,9 +15,11 @@ class Statistic
 		# 	:headers => {'Content-type' => 'text/xml'}
 		# )
 
-	    doc = Nokogiri::XML(open("http://www.cafeconleche.org/examples/baseball/1998statistics.xml"))
-	    
+	    doc = Nokogiri::XML(open("db/1998statistics.xml"))
+	    item_cnt = 0;
 	    doc.css('PLAYER').each do |node|
+	    	  item_cnt+=1
+	    	  break if item_cnt > 28
 		      children = node.children
 		      players = {
 		        :surname => children.css('SURNAME').inner_text,
