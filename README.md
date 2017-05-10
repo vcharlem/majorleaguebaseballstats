@@ -8,7 +8,7 @@
 
 ### Just a couple of notes regarding this project…
 1. It is currently running Rails 4.2/Ruby 22
-2. We're taking advantage of popular gems like Bootstrap, Nokogiri and Will_pagination. 
+2. We're taking advantage of popular gems like Bootstrap, Nokogiri, HTTParty and Will_pagination. 
 3. Calculations and terms were based on [Wiki-Baseball Stats](http://en.wikipedia.org/wiki/Baseball_statistics)
 4. It adds a Search Box which searches by last name of players
 
